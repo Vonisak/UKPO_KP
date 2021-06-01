@@ -1,4 +1,3 @@
-package com.company.resources;
 
 import java.awt.event.*;
 import javax.swing.*;
