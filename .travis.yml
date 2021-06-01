@@ -1,4 +1,1 @@
 language: java
-services:
-  - xvfb
-  script: ./mvnw clean install
