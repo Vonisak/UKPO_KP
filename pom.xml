@@ -10,6 +10,7 @@
 
     <build>
         <testSourceDirectory>src/test/java/com/company</testSourceDirectory>
+        <sourceDirectory>src/main/java/com/company</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
