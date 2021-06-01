@@ -1,5 +1,4 @@
 language: java
-https://travis-ci.org/dist: xenial
 services:
   - xvfb
   script: ./mvnw clean install
