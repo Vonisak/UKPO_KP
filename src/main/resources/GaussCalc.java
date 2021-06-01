@@ -1,5 +1,8 @@
-import java.awt.event.*;
+package com.company.resources;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class GaussCalc extends JFrame {
     public static JLabel answer = new JLabel("Ответ: ");
