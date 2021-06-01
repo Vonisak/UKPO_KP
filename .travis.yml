@@ -1,3 +1,2 @@
 language: java
-script: 
-- ./mvnw clean install -B
+script: ./mvnw clean install
