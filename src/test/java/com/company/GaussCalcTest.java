@@ -29,6 +29,7 @@ class MainTest {
         }
     }
 
+    
     // Тесты для UI
     @Test
     void test1() {
