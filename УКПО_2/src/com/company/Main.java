@@ -1,20 +1,238 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class Main {
+class GaussCalc extends JFrame {
+    public static JLabel answer = new JLabel("Ответ: ");
+    public static JButton calc = new JButton("Решить методом Гаусса");
+    public static JButton cancel = new JButton("Очистить поля");
+    public static JTextField el00 = new JTextField(4);
+    public static JTextField el01 = new JTextField(4);
+    public static JTextField el02 = new JTextField(4);
+    public static JTextField el0 = new JTextField(4);
+    public static JTextField el10 = new JTextField(4);
+    public static JTextField el11 = new JTextField(4);
+    public static JTextField el12 = new JTextField(4);
+    public static JTextField el1 = new JTextField(4);
+    public static JTextField el20 = new JTextField(4);
+    public static JTextField el21 = new JTextField(4);
+    public static JTextField el22 = new JTextField(4);
+    public static JTextField el2 = new JTextField(4);
 
-    public static void show(double[][] matrix, double[] y, int n) {     //n - кол-во строк
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(matrix[i][j] + "*x" + j);
-                if (j < n - 1) {
-                    System.out.print(" + ");
-                }
+    public GaussCalc(){
+        super("Gauss Calculator");
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setBounds(100, 100, 350,300);
+        JPanel panel = new JPanel();
+        frame.add(panel);
+        calc.setEnabled(false);
+        cancel.setEnabled(false);
+
+        panel.add(el00);
+        panel.add(new JLabel("x1 + "));
+        panel.add(el01);
+        panel.add(new JLabel("x2 + "));
+        panel.add(el02);
+        panel.add(new JLabel("x3 ="));
+        panel.add(el0);
+        panel.add(el10);
+        panel.add(new JLabel("x1 + "));
+        panel.add(el11);
+        panel.add(new JLabel("x2 + "));
+        panel.add(el12);
+        panel.add(new JLabel("x3 ="));
+        panel.add(el1);
+        panel.add(el20);
+        panel.add(new JLabel("x1 + "));
+        panel.add(el21);
+        panel.add(new JLabel("x2 + "));
+        panel.add(el22);
+        panel.add(new JLabel("x3 ="));
+        panel.add(el2);
+        panel.add(calc);
+        panel.add(cancel);
+        panel.add(answer);
+
+        frame.setVisible(true);
+
+        el00.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
             }
-            System.out.print(" = " + y[i] + "\n");
+        });
+
+        el01.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+
+            }
+        });
+
+        el02.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el0.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el10.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el11.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el12.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el1.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el20.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el21.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el22.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        el2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calc.setEnabled(block());
+                cancel.setEnabled(blockCancel());
+            }
+        });
+
+        cancel.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                el00.setText("");
+                el01.setText("");
+                el02.setText("");
+                el0.setText("");
+                el10.setText("");
+                el11.setText("");
+                el12.setText("");
+                el1.setText("");
+                el20.setText("");
+                el21.setText("");
+                el22.setText("");
+                el2.setText("");
+                answer.setText("Ответ: ");
+                panel.updateUI();
+            }
+        });
+
+        calc.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                double[][] matrix = new double[][]{{Double.parseDouble(String.valueOf(el00.getText())), Double.parseDouble(String.valueOf(el01.getText())), Double.parseDouble(String.valueOf(el02.getText()))},
+                        {Double.parseDouble(String.valueOf(el10.getText())), Double.parseDouble(String.valueOf(el11.getText())), Double.parseDouble(String.valueOf(el12.getText()))},
+                        {Double.parseDouble(String.valueOf(el20.getText())), Double.parseDouble(String.valueOf(el21.getText())), Double.parseDouble(String.valueOf(el22.getText()))}};
+                double[] y = new double[]{Double.parseDouble(String.valueOf(el0.getText())), Double.parseDouble(String.valueOf(el1.getText())), Double.parseDouble(String.valueOf(el2.getText()))};
+                double[] x = gauss(matrix, y, 3);
+
+                answer.setText("Ответ: " + "x1 = " + x[0] + " x2 = " + x[1] + " x3 = " + x[2]);
+            }
+        });
+    }
+
+    public static boolean blockCancel () {
+        if (((el00.getText().equals("")
+                && el01.getText().equals("")
+                && el02.getText().equals("")
+                && el0.getText().equals("")
+                && el10.getText().equals("")
+                && el11.getText().equals("")
+                && el12.getText().equals("")
+                && el1.getText().equals("")
+                && el20.getText().equals("")
+                && el21.getText().equals("")
+                && el22.getText().equals("")
+                && el2.getText().equals("")))) {
+            return false;
+        }else return true;
+    }
+
+    public static boolean block () {
+        if ((el00.getText().equals("")
+                || el01.getText().equals("")
+                || el02.getText().equals("")
+                || el0.getText().equals("")
+                || el10.getText().equals("")
+                || el11.getText().equals("")
+                || el12.getText().equals("")
+                || el1.getText().equals("")
+                || el20.getText().equals("")
+                || el21.getText().equals("")
+                || el22.getText().equals("")
+                || el2.getText().equals(""))
+                || (el00.getText().equals("")
+                && el01.getText().equals("")
+                && el02.getText().equals("")
+                && el0.getText().equals("")
+                && el10.getText().equals("")
+                && el11.getText().equals("")
+                && el12.getText().equals("")
+                && el1.getText().equals("")
+                && el20.getText().equals("")
+                && el21.getText().equals("")
+                && el22.getText().equals("")
+                && el2.getText().equals(""))) {
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -76,40 +294,7 @@ public class Main {
         return x;
     }
 
-    public static void main(String args[]) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        double[][] matrix;
-        double[] y;
-        double[] x;
-        int n;
-        System.out.print("Введите кол-во уравнений: ");
-        n = Integer.parseInt(reader.readLine());
-        System.out.println();
-        matrix = new double[n][3];
-        y = new double[n];
-        for (int i = 0; i < n; i++)
-        {
-            matrix[i] = new double[n];
-            for (int j = 0; j < n; j++)
-            {
-                System.out.print("a[" + i + "][" + j + "]= ");
-                matrix[i][j] = Double.parseDouble(reader.readLine());
-            }
-        }
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print("y[" + i + "]= ");
-            y[i] = Double.parseDouble(reader.readLine());
-        }
-        show(matrix, y, n);
-        x = gauss(matrix, y, n);
-        for (int i = 0; i < n; i++) {
-            System.out.println("x[" + i + "]=" + x[i]);
-        }
-//        double[] x = Main.gauss(new double[][] {{1,0,2},{3,0,5},{5,0,1}}, new double[] {12,56,87},3);
-//                for (int i = 0; i < 3; i++) {
-//            System.out.println("x[" + i + "]=" + x[i]);
-//        }
-
+    public static void main(String[] args) {
+        GaussCalc app = new GaussCalc();
     }
 }
