@@ -8,6 +8,7 @@
     <artifactId>ukpo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    
     <build>
         <testSourceDirectory>src/test/java/com/company/pack</testSourceDirectory>
         <sourceDirectory>src/main/java/com/company/pack</sourceDirectory>
