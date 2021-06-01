@@ -1,2 +1,7 @@
 language: java
-script: ./mvnw clean install
+jdk:
+  - openjdk8
+https://travis-ci.org/dist: xenial
+services:
+  - xvfb
+  script: ./mvnw clean install
