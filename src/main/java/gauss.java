@@ -29,7 +29,7 @@ class GaussCalc extends JFrame {
         calc.setEnabled(false);
         cancel.setEnabled(false);
 
-        
+
         panel.add(el00);
         panel.add(new JLabel("x1 + "));
         panel.add(el01);
