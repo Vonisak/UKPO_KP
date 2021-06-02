@@ -10,6 +10,7 @@ class MainTest {
         Assertions.assertArrayEquals(GaussCalc.gauss(new double[][] {{8,154},{12,56}}, new double[] {6,37},2),new double[] {3.83,-0.16},0.01);
     }
 
+    
     @Test
     void gaussIncorrect() {
         Assertions.assertArrayEquals(GaussCalc.gauss(new double[][] {{8,154},{12,56}}, new double[] {6,37},2),new double[] {3.83,-0.16},0.01);
